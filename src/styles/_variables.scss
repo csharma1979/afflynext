@@ -1,0 +1,11 @@
+// Brand Colors
+$navy-blue: #1E3A5F;
+$teal: #2CA58D;
+$background-light: #F8F9FA;
+$text-dark: #333333;
+$cta-orange: #FF7A59;
+$dark-bg: #121212;
+
+// Gradients
+$primary-gradient: linear-gradient(135deg, $navy-blue 0%, darken($navy-blue, 10%) 100%);
+$accent-gradient: linear-gradient(135deg, $teal 0%, darken($teal, 10%) 100%);
