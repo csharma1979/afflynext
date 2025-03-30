@@ -1,58 +1,112 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
-import { FaEnvelope, FaMobile, FaHashtag, FaMagnifyingGlass, 
-         FaHandshake, FaNewspaper, FaCommentSms, 
-         FaRectangleAd, FaVideo } from 'react-icons/fa6';
+
+const services = [
+  {
+    id: 'email-marketing',
+    name: 'Email Marketing',
+    icon: '📧'
+  },
+  {
+    id: 'mobile-marketing',
+    name: 'Mobile Marketing',
+    icon: '📱'
+  },
+  {
+    id: 'social-media-marketing',
+    name: 'Social Media Marketing',
+    icon: '🌐'
+  },
+  {
+    id: 'search-advertising',
+    name: 'Search Advertising',
+    icon: '🔍'
+  },
+  {
+    id: 'affiliate-marketing',
+    name: 'Affiliate Marketing',
+    icon: '🤝'
+  },
+  {
+    id: 'native-advertising',
+    name: 'Native Advertising',
+    icon: '📢'
+  },
+  {
+    id: 'sms-marketing',
+    name: 'SMS Marketing',
+    icon: '💬'
+  },
+  {
+    id: 'display-advertising',
+    name: 'Display Advertising',
+    icon: '🖼️'
+  },
+  {
+    id: 'video-advertising',
+    name: 'Video Advertising',
+    icon: '🎥'
+  }
+];
 
 const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const services = [
-    { icon: <FaEnvelope />, name: 'Email Marketing' },
-    { icon: <FaMobile />, name: 'Mobile Marketing' },
-    { icon: <FaHashtag />, name: 'Social Media Marketing' },
-    { icon: <FaMagnifyingGlass />, name: 'Search Advertising' },
-    { icon: <FaHandshake />, name: 'Affiliate Marketing' },
-    { icon: <FaNewspaper />, name: 'Native Advertising' },
-    { icon: <FaCommentSms />, name: 'SMS Marketing' },
-    { icon: <FaRectangleAd />, name: 'Display Advertising' },
-    { icon: <FaVideo />, name: 'Video Advertising' }
-  ];
+  const handleMouseEnter = () => {
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsServicesOpen(false);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Inside your Header component, just before the closing header tag
+  <div 
+    className={`mobile-menu-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+    onClick={() => setIsMobileMenuOpen(false)}
+  ></div>
 
   return (
     <header className="header">
       <div className="header-content">
-        <div className="logo">
-          <img src="/logo.png" alt="Logo" />
-        </div>
-        <nav className="nav-menu">
+        <Link to="/" className="logo">
+          <img src="/images/logo.png" alt="Afflyn Logo" />
+        </Link>
+        <nav className={`nav-menu ${isMobileMenuOpen ? 'active' : ''}`}>
           <ul>
-            <li><a href="/">Home</a></li>
+            <li><Link to="/">Home</Link></li>
             <li 
               className={`services-dropdown ${isServicesOpen ? 'active' : ''}`}
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
-              <a href="/services">Services</a>
-              {isServicesOpen && (
-                <div className="dropdown-menu">
-                  <div className="services-grid">
-                    {services.map((service, index) => (
-                      <a key={index} href={`/services/${service.name.toLowerCase().replace(/\s+/g, '-')}`} className="service-item">
-                        <span className="service-icon">{service.icon}</span>
-                        <span className="service-name">{service.name}</span>
-                      </a>
-                    ))}
-                  </div>
+              <Link to="/services">Services</Link>
+              <div className="dropdown-menu">
+                <div className="services-grid">
+                  {services.map((service) => (
+                    <Link 
+                      key={service.id}
+                      to={`/services/${service.id}`}
+                      className="service-item"
+                    >
+                      <span className="service-icon">{service.icon}</span>
+                      <span className="service-name">{service.name}</span>
+                    </Link>
+                  ))}
                 </div>
-              )}
+              </div>
             </li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><Link to="/blog">Blog</Link></li>
           </ul>
         </nav>
         <div className="contact-button">
-          <a href="tel:+1-832-312-5501">Call now: +1- 832-312-5501</a>
+          <Link to="/contact">Contact Us</Link>
         </div>
       </div>
     </header>

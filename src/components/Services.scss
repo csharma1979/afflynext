@@ -1,40 +1,106 @@
-.services {
-  padding: 4rem 2rem;
-  text-align: center;
+@import '../styles/variables';
 
-  h1 {
-    color: #1e3c72;
+.services {
+  padding: 5rem 0;
+  background: $background-light;
+
+  .container {
+    max-width: 1200px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .services-header {
+    text-align: center;
     margin-bottom: 3rem;
-    font-size: 2.5rem;
+
+    h1 {
+      font-size: 2.5rem;
+      color: $navy-blue;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text-dark;
+      font-size: 1.2rem;
+    }
   }
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  }
 
-    .service-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+  .service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba($navy-blue, 0.05);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba($navy-blue, 0.1);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .service-icon-fallback {
+        width: 100%;
+        height: 100%;
+        background: $teal;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+
+    h3 {
+      color: $navy-blue;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text-dark;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .learn-more {
+      color: $teal;
+      font-weight: 600;
+      display: inline-block;
+      transition: transform 0.2s ease;
 
       &:hover {
-        transform: translateY(-5px);
+        transform: translateX(5px);
       }
+    }
+  }
 
-      h3 {
-        color: #1e3c72;
-        margin-bottom: 1rem;
-      }
-
-      p {
-        color: #666;
-        line-height: 1.6;
-      }
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
     }
   }
 }

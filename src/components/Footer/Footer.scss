@@ -1,0 +1,119 @@
+@import '../../styles/variables';
+
+.footer {
+  background: #000000;
+  color: white;
+  padding: 4rem 0 2rem;
+
+  .container {
+    max-width: 1200px;
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footer-col {
+    .footer-logo {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+
+      img {
+        height: 40px;
+        width: auto;
+      }
+    }
+
+    .company-desc {
+      color: rgba(white, 0.8);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        a {
+          color: rgba(white, 0.8);
+          text-decoration: none;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #2da58d;
+          }
+        }
+      }
+    }
+
+    .contact-info {
+      li {
+        display: flex;
+        gap: 1rem;
+        color: rgba(white, 0.8);
+        margin-bottom: 1rem;
+
+        span {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(white, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    .legal-links {
+      display: flex;
+      gap: 2rem;
+
+      a {
+        color: rgba(white, 0.8);
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #2da58d;
+        }
+      }
+    }
+
+    .copyright {
+      color: rgba(white, 0.8);
+    }
+  }
+}
